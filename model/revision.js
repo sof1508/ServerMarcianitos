@@ -16,7 +16,7 @@ x.get_revisiones = function() {
 }
 
 //Crear revision
-x.create_revision = function(id, nombreRevisor, idAeronave, fecha) {
+x.create_revision = function(id, nombreRevisor, fecha, idAeronave) {
     return query('INSERT INTO revision VALUES (?,?,?,?)', [
         id, nombreRevisor, fecha, idAeronave
     ])

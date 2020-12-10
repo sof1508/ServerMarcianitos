@@ -27,8 +27,8 @@ http.get('/revision/:idAeronave', async function(req, res, next) {
 // suponemos que tenemos req.body de id, nombreRevisor, idAeronave, fecha
 http.post('/', async function(req, res, next) {
     try {
-        let { id, nombreRevisor, idAeronave, fecha } = req.body;
-        let datos = await db.create_revision(id, nombreRevisor, idAeronave, fecha)
+        let { id, nombreRevisor, fecha, idAeronave } = req.body;
+        let datos = await db.create_revision(id, nombreRevisor, fecha, idAeronave)
         res.end()
     } catch (error) {
         next(error)

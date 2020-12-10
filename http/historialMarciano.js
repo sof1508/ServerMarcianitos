@@ -14,7 +14,7 @@ http.get('/historialRevision/:idRevision', async function(req, res, next) {
 })
 
 //Leer las revisiones de un marciano
-http.get('/historialMarciano/:idRevision', async function(req, res, next) {
+http.get('/historialMarciano/:idMarciano', async function(req, res, next) {
     try {
         let { idMarciano } = req.params;
         let datos = await db.get_marcianosAeronave(idMarciano)
