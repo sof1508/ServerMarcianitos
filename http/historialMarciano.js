@@ -1,27 +1,38 @@
 const express = require('express')
-const http = express()
-const port = 8000
+const db = require('../model/historialMarciano.js')
+const http = express.Router()
 
-//Leer
-http.get('/', function(req, res) {
-    res.send('Hello World!')
+//Leer los marcianos de cierta revision
+http.get('/historialRevision/:idRevision', async function(req, res, next) {
+    try {
+        let { idRevision } = req.params;
+        let datos = await db.get_marcianosRevision(idRevision)
+        res.json(datos)
+    } catch (error) {
+        next(error)
+    }
+})
+
+//Leer las revisiones de un marciano
+http.get('/historialMarciano/:idRevision', async function(req, res, next) {
+    try {
+        let { idMarciano } = req.params;
+        let datos = await db.get_marcianosAeronave(idMarciano)
+        res.json(datos)
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Crear
-http.post('/', function(req, res) {
-    res.send('Got a POST request')
+// suponemos que tenemos req.body de idMarciano, idRevision
+http.post('/', async function(req, res, next) {
+    try {
+        let { idMarciano, idRevision } = req.body;
+        let datos = await db.create_marcianoHistorial(idMarciano, idRevision)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 })
-
-//Modificar
-http.put('/user', function(req, res) {
-    res.send('Got a PUT request at /user')
-})
-
-//Borrar
-http.delete('/user', function(req, res) {
-    res.send('Got a DELETE request at /user')
-})
-
-http.listen(port, () => {
-    console.log(`listening at http://localhost:${port}`)
-})
+module.exports = http

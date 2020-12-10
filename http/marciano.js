@@ -1,27 +1,38 @@
 const express = require('express')
-const http = express()
-const port = 8000
+const db = require('../model/marciano.js')
+const http = express.Router()
 
 //Leer
-http.get('/', function(req, res) {
-    res.send('Hello World!')
+http.get('/marcianoNave/:idAeronave', async function(req, res, next) {
+    try {
+        let { idAeronave } = req.params;
+        let datos = await db.get_marcianosAeronave(idAeronave)
+        res.json(datos)
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Crear
-http.post('/', function(req, res) {
-    res.send('Got a POST request')
+// suponemos que tenemos req.body de id, nombre, idAeronave
+http.post('/', async function(req, res, next) {
+    try {
+        let { id, nombre, idAeronave } = req.body;
+        let datos = await db.create_marciano(id, nombre, idAeronave)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Modificar
-http.put('/user', function(req, res) {
-    res.send('Got a PUT request at /user')
+http.put('/', async function(req, res, next) {
+    try {
+        let { id, idAeronave } = req.body;
+        let datos = await db.subir_marcianosAeronave(id, idAeronave)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 })
-
-//Borrar
-http.delete('/user', function(req, res) {
-    res.send('Got a DELETE request at /user')
-})
-
-http.listen(port, () => {
-    console.log(`listening at http://localhost:${port}`)
-})
+module.exports = http

@@ -1,27 +1,27 @@
 const express = require('express')
-const http = express()
-const port = 8000
+const db = require('../model/naveNodriza.js')
+const http = express.Router()
 
 //Leer
-http.get('/', function(req, res) {
-    res.send('Hello World!')
+http.get('/', async function(req, res, next) {
+    try {
+        let datos = await db.get_naveNodriza()
+        res.json(datos)
+    } catch (error) {
+        next(error)
+    }
 })
 
 //Crear
-http.post('/', function(req, res) {
-    res.send('Got a POST request')
+// suponemos que tenemos req.body de id, nombre
+http.post('/', async function(req, res, next) {
+    try {
+        let { id, nombre } = req.body;
+        let datos = await db.create_naveNodriza(id, nombre)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 })
 
-//Modificar
-http.put('/user', function(req, res) {
-    res.send('Got a PUT request at /user')
-})
-
-//Borrar
-http.delete('/user', function(req, res) {
-    res.send('Got a DELETE request at /user')
-})
-
-http.listen(port, () => {
-    console.log(`listening at http://localhost:${port}`)
-})
+module.exports = http

@@ -20,5 +20,3 @@ export function create_revision(id, nombreRevisor, idAeronave, fecha) {
         id, nombreRevisor, fecha, idAeronave
     ])
 }
-
-//module.exports = get_revisionesAeronave, get_revisiones, create_revision;

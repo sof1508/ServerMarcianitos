@@ -1,34 +1,27 @@
 const express = require('express')
-const http = express()
-const port = 8000
+const db = require('../model/aeronave.js')
+const http = express.Router()
 
-//Leer --- poner path del sitio web donde se realizará esta petición
-http.get('/', function(req, res) {
-    async function asyncCall() {
-        console.log('calling');
-        const result = await resolveAfter2Seconds();
-        console.log(result);
-        // expected output: "resolved"
+//Leer
+http.get('/', async function(req, res, next) {
+    try {
+        let datos = await db.get_Aeronaves()
+        res.json(datos)
+    } catch (error) {
+        next(error)
     }
 })
 
-//Crear --- poner path del sitio web donde se realizará esta petición
-http.post('/', function(req, res) {
-    res.send('Got a POST request')
+//Crear
+// suponemos que tenemos req.body de id, nombre, origen, destino
+http.post('/', async function(req, res, next) {
+    try {
+        let { id, nombre, origen, destino } = req.body;
+        let datos = await db.create_aeronave(id, nombre, origen, destino)
+        res.end()
+    } catch (error) {
+        next(error)
+    }
 })
 
-/*
-//Modificar
-http.put('/user', function(req, res) {
-    res.send('Got a PUT request at /user')
-})
-
-//Borrar
-http.delete('/user', function(req, res) {
-    res.send('Got a DELETE request at /user')
-})
-*/
-
-http.listen(port, () => {
-    console.log(`listening at http://localhost:${port}`)
-})
+module.exports = http

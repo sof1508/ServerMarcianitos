@@ -15,7 +15,7 @@ export function get_marcianosRevision(idRevision) {
 }
 
 //Crear historial marciano
-export function create_marciano(idMarciano, idRevision) {
+export function create_marcianoHistorial(idMarciano, idRevision) {
     return db.query('INSERT INTO `historial marciano` VALUES (?,?)', [
         idMarciano, idRevision
     ])
