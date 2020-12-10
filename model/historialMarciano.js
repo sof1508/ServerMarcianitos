@@ -1,21 +1,22 @@
 let db = require('../connection_db.js')
+const x = {}
 
 //Listar 
-export function get_marcianosAeronave(idMarciano) {
+x.get_marcianosAeronave = function(idMarciano) {
     return db.query('SELECT * FROM `historial marciano` WHERE Marciano = ?', [
         idMarciano
     ])
 }
 
 //Listar 
-export function get_marcianosRevision(idRevision) {
+x.get_marcianosRevision = function(idRevision) {
     return db.query('SELECT * FROM `historial marciano` WHERE Revision = ?', [
         idRevision
     ])
 }
 
 //Crear historial marciano
-export function create_marcianoHistorial(idMarciano, idRevision) {
+x.create_marcianoHistorial = function(idMarciano, idRevision) {
     return db.query('INSERT INTO `historial marciano` VALUES (?,?)', [
         idMarciano, idRevision
     ])
