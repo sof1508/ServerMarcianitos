@@ -21,3 +21,5 @@ x.create_revision = function(id, nombreRevisor, idAeronave, fecha) {
         id, nombreRevisor, fecha, idAeronave
     ])
 }
+
+module.exports = x

@@ -1,5 +1,6 @@
 const express = require('express')
 const http = express()
+let port = 8000
 
 http.use(express.json());
 
@@ -17,3 +18,7 @@ http.use('/revision', require('./revision.js'));
 
 // historial
 http.use('/historialMarciano', require('./historialMarciano.js'));
+
+http.listen(port, () => {
+    console.log(`listening at http://localhost:${port}`)
+})

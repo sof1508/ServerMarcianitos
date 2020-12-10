@@ -35,3 +35,5 @@ x.set_marcianosAeronave = function(id, idAeronave) {
             id
         ])
     }*/
+
+module.exports = x

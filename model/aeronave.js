@@ -14,3 +14,5 @@ x.create_aeronave = function(id, nombre, nOrigen, nDestino) {
         id, nombre, nOrigen, nDestino
     ])
 }
+
+module.exports = x

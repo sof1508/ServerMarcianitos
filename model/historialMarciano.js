@@ -21,3 +21,5 @@ x.create_marcianoHistorial = function(idMarciano, idRevision) {
         idMarciano, idRevision
     ])
 }
+
+module.exports = x

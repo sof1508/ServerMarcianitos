@@ -12,3 +12,5 @@ x.create_naveNodriza = function(id, nombre) {
         id, nombre
     ])
 }
+
+module.exports = x
