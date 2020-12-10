@@ -16,8 +16,8 @@ http.get('/', async function(req, res, next) {
 // suponemos que tenemos req.body de id, nombre, origen, destino
 http.post('/', async function(req, res, next) {
     try {
-        let { id, nombre, origen, destino } = req.body;
-        let datos = await db.create_aeronave(id, nombre, origen, destino)
+        let { id, nombre, max, origen, destino } = req.body;
+        let datos = await db.create_aeronave(id, nombre, max, origen, destino)
         res.end()
     } catch (error) {
         next(error)

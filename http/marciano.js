@@ -29,7 +29,7 @@ http.post('/', async function(req, res, next) {
 http.put('/', async function(req, res, next) {
     try {
         let { id, idAeronave } = req.body;
-        let datos = await db.subir_marcianosAeronave(id, idAeronave)
+        let datos = await db.set_marcianosAeronave(id, idAeronave)
         res.end()
     } catch (error) {
         next(error)

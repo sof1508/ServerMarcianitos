@@ -1,17 +1,15 @@
-let db = require('../connection_db.js')
+let query = require('../connection_db.js')
 const x = {}
 
 //Listar aeronaves
 x.get_Aeronaves = function() {
-    return db.query('SELECT * FROM aeronave', [
-
-    ])
+    return query('SELECT * FROM aeronave', [])
 }
 
 //Crear aeronave
-x.create_aeronave = function(id, nombre, nOrigen, nDestino) {
-    return db.query('INSERT INTO aeronave VALUES (?,?,?,?)', [
-        id, nombre, nOrigen, nDestino
+x.create_aeronave = function(id, nombre, max, nOrigen, nDestino) {
+    return query('INSERT INTO aeronave VALUES (?,?,?,?,?)', [
+        id, nombre, max, nOrigen, nDestino
     ])
 }
 
