@@ -1,6 +1,15 @@
 const express = require('express')
+const cors = require('cors')
 const http = express()
 let port = 8000
+
+/*http.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+})*/
+
+http.use(cors());
 
 http.use(express.json());
 

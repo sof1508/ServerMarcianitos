@@ -3,7 +3,7 @@ const x = {}
 
 //Listar naves Nodrizas
 x.get_naveNodriza = function() {
-    return query('SELECT * FROM `nave nodriza` ', )
+    return query('SELECT ID as id, Nombre as nombre FROM `nave nodriza` ', )
 }
 
 //Crear nave Nodriza

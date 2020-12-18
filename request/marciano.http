@@ -1,4 +1,4 @@
-GET http://localhost:8000/marciano/marcianoNave/1 HTTP/1.1
+GET http://localhost:8000/marciano/marcianoNave/2 HTTP/1.1
 
 ###
 
@@ -6,8 +6,8 @@ POST http://localhost:8000/marciano HTTP/1.1
 Content-Type: application/json 
 
 {
-    "id": 4,
-    "nombre": "Marcianito 4",
+    "id": null,
+    "nombre": "Marcianito 6",
     "idAeronave": null
 }
 
@@ -16,6 +16,6 @@ PUT http://localhost:8000/marciano HTTP/1.1
 Content-Type: application/json 
 
 {
-    "id": 4,
-    "idAeronave": 3
+    "id": 1,
+    "idAeronave": 2
 }
