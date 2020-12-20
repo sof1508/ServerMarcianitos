@@ -3,14 +3,14 @@ const x = {}
 
 //Listar 
 x.get_marcianosAeronave = function(idMarciano) {
-    return query('SELECT * FROM `historial marciano` WHERE Marciano = ?', [
+    return query('SELECT Marciano as idMarciano, Revision as idRevision FROM `historial marciano` WHERE Marciano = ?', [
         idMarciano
     ])
 }
 
 //Listar 
 x.get_marcianosRevision = function(idRevision) {
-    return query('SELECT * FROM `historial marciano` WHERE Revision = ?', [
+    return query('SELECT Marciano as idMarciano, Revision as idRevision FROM `historial marciano` WHERE Revision = ?', [
         idRevision
     ])
 }
