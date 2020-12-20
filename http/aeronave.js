@@ -12,6 +12,17 @@ http.get('/', async function(req, res, next) {
     }
 })
 
+//Leer aeronave con tal id
+http.get('/nave/:idAeronave', async function(req, res, next) {
+    try {
+        let { idAeronave } = req.params;
+        let datos = await db.get_Aeronaves(idAeronave)
+        res.json(datos)
+    } catch (error) {
+        next(error)
+    }
+})
+
 //Crear
 // suponemos que tenemos req.body de id, nombre, origen, destino
 http.post('/', async function(req, res, next) {
