@@ -10,7 +10,7 @@ x.get_marcianosAeronave = function(idMarciano) {
 
 //Listar 
 x.get_marcianosRevision = function(idRevision) {
-    return query('SELECT marciano.ID as idMarciano, marciano.Nombre as nombre FROM `historial marciano` JOIN aeronave ON marciano.ID = `historial marciano`.Marciano  WHERE `historial marciano`.Revision = ?', [
+    return query('SELECT marciano.ID as idMarciano, `historial marciano`.Revision as idRevision, marciano.Nombre as nombre FROM `historial marciano` JOIN aeronave ON marciano.ID = `historial marciano`.Marciano  WHERE `historial marciano`.Revision = ?', [
         idRevision
     ])
 }
