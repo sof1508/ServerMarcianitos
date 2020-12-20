@@ -29,9 +29,15 @@ http.post('/', async function(req, res, next) {
     try {
         let { id, nombreRevisor, fecha, idAeronave } = req.body;
         let datos = await db.create_revision(id, nombreRevisor, fecha, idAeronave)
-        res.end()
+        res.send("CREADO");
     } catch (error) {
-        next(error)
+        if (error.code && error.code == 'ER_DUP_ENTRY' && error.sqlMessage.includes("PRIMARY")) {
+            res.send("ID_DUPLICADO");
+        } else if (error.code && error.code == 'ER_DUP_ENTRY' && error.sqlMessage.includes("revision_UN")) {
+            res.send("FECHA_DUPLICADA");
+        } else {
+            next(error);
+        }
     }
 })
 

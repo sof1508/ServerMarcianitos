@@ -20,13 +20,11 @@ http.post('/', async function(req, res, next) {
         let datos = await db.create_naveNodriza(id, nombre)
         res.send("CREADO");
     } catch (error) {
-        if (erro.code && error.code == 'ER_DUP_ENTRY') {
+        if (error.code && error.code == 'ER_DUP_ENTRY') {
             res.send("ID_DUPLICADO");
-            comsole.log(res);
         } else {
             next(error);
         }
-
     }
 })
 

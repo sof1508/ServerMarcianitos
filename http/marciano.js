@@ -19,9 +19,13 @@ http.post('/', async function(req, res, next) {
     try {
         let { id, nombre, idAeronave } = req.body;
         let datos = await db.create_marciano(id, nombre, idAeronave)
-        res.end()
+        res.send("CREADO");
     } catch (error) {
-        next(error)
+        if (error.code && error.code == 'ER_DUP_ENTRY') {
+            res.send("ID_DUPLICADO");
+        } else {
+            next(error);
+        }
     }
 })
 
