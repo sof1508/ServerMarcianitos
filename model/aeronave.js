@@ -3,7 +3,7 @@ const x = {}
 
 //Listar aeronaves
 x.get_Aeronaves = function() {
-    return query('SELECT * FROM aeronave', [])
+    return query('SELECT ID as id, Nombre as nombre, max_Marcianos as max, naveOrigen as origen, naveDestino as destino FROM aeronave', [])
 }
 
 //Crear aeronave

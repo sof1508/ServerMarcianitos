@@ -13,7 +13,7 @@ http.get('/', async function(req, res, next) {
 })
 
 //Leer las revisiones de cierta aeronave
-http.get('/revision/:idAeronave', async function(req, res, next) {
+http.get('/revisionAeronave/:idAeronave', async function(req, res, next) {
     try {
         let { idAeronave } = req.params;
         let datos = await db.get_revisionesAeronave(idAeronave)

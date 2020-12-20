@@ -3,7 +3,7 @@ const x = {}
 
 //Listar marcianos en una aeronave
 x.get_marcianosAeronave = function(idAeronave) {
-    return query('SELECT * FROM marciano WHERE naveAbordo = ?', [
+    return query('SELECT ID as id, Nombre as nombre, naveAbordo as idAeronave FROM marciano WHERE naveAbordo = ?', [
         idAeronave
     ])
 }
