@@ -29,10 +29,10 @@ http.post('/', async function(req, res, next) {
     try {
         let { id, nombre, max, origen, destino } = req.body;
         let datos = await db.create_aeronave(id, nombre, max, origen, destino)
-        res.send("CREADO");
+        res.json({ msg: "CREADO" });
     } catch (error) {
         if (error.code && error.code == 'ER_DUP_ENTRY') {
-            res.send("ID_DUPLICADO");
+            res.json({ msg: "ID_DUPLICADO" });
         } else {
             next(error);
         }
