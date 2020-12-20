@@ -13,6 +13,18 @@ http.get('/marcianoNave/:idAeronave', async function(req, res, next) {
     }
 })
 
+//Leer
+http.get('/idMarciano/:id', async function(req, res, next) {
+    try {
+        let { id } = req.params;
+        let datos = await db.get_marciano(id)
+        res.json(datos)
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+})
+
 //Crear
 // suponemos que tenemos req.body de id, nombre, idAeronave
 http.post('/', async function(req, res, next) {
@@ -34,9 +46,10 @@ http.put('/', async function(req, res, next) {
     try {
         let { id, idAeronave } = req.body;
         let datos = await db.set_marcianosAeronave(id, idAeronave)
-        res.end()
+        res.send("MODIFICADO");
     } catch (error) {
-        next(error)
+        next(error);
     }
 })
+
 module.exports = http

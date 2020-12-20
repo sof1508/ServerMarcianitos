@@ -8,6 +8,13 @@ x.get_marcianosAeronave = function(idAeronave) {
     ])
 }
 
+//get marciano con tal id
+x.get_marciano = function(id) {
+    return query('SELECT ID as id, Nombre as nombre, naveAbordo as idAeronave FROM marciano WHERE ID = ?', [
+        id
+    ])
+}
+
 //Crear marciano
 x.create_marciano = function(id, nombre, idAeronave) {
     return query('INSERT INTO marciano VALUES (?,?,?)', [
